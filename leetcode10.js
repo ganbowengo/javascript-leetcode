@@ -50,16 +50,19 @@
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function (s, p) {
-    if (p === '*' && !s) return true
-    if ((!p || !s) && s !== p) return false
-    if (s === p) return true
-    if (p.indexOf('.') || p.indexOf('*')) {
-        let reg = new RegExp(`^${p}$`)
-        return reg.test(s)
-    } else if (s !== p) {
-        return false
-    }
-};
+// var isMatch = function (s, p) {
+//     if (p === '*' && !s) return true
+//     if ((!p || !s) && s !== p) return false
+//     if (s === p) return true
+//     if (p.indexOf('.') || p.indexOf('*')) {
+//         let reg = new RegExp(`^${p}$`)
+//         return reg.test(s)
+//     } else if (s !== p) {
+//         return false
+//     }
+// };
+
+var isMatch = (s, p)=> new RegExp(`^${p}$`).test(s);
+
 
 console.log(isMatch('', '*'))
