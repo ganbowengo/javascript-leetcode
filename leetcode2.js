@@ -66,15 +66,16 @@ var linkedToNum = function (linked){
 }
 
 var add = function (a, b) { //两个字符串相加
-  var res = '', c = 0
-  a = a.split('')
-  b = b.split('')
-  while (a.length || b.length || c) {
-    c += ~~a.pop() + ~~b.pop()
-    res = c % 10 + res
-    c = c > 9
-  }
-  return res
+    parseInt
+    var res = '', c = 0
+    a = a.split('')
+    b = b.split('')
+    while (a.length || b.length || c) {
+        c += ~~a.pop() + ~~b.pop()
+        res = c % 10 + res
+        c = c > 9
+    }
+    return (a-0) + (b-0)
 }
 
 var addTwoNumbers = function(l1, l2) {
@@ -90,4 +91,5 @@ var addTwoNumbers = function(l1, l2) {
     return sum[sum.length - 1]
 };
 
-addTwoNumbers(a,c)
+console.log(addTwoNumbers(a,c))
+// addTwoNumbers(a,c)

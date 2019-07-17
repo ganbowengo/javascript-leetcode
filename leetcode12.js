@@ -42,46 +42,18 @@
 
 var intToRoman = function (num) {
     let str = ''
-    let reflection = ['I', 'V', 'X', 'L', 'C', 'D', 'M']
-    // let reflection = [{
-    //         1: 'I',
-    //         5: 'V'
-    //     },
-    //     {
-    //         10: 'X',
-    //         50: 'L'
-    //     },
-    //     {
-    //         100: 'C',
-    //         500: 'D'
-    //     }, {
-    //         1000: 'M'
-    //     }
-    // ]
+    let reflection1 = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    let reflection2 = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
     let i = 0
     while (num > 0) {
-        let s = num % 10
-        if (s === 9) {
-            str += reflection[i] + reflection[i + 2]
+        if (num >= reflection1[i]) {
+            str += reflection2[i]
+            num -= reflection1[i]
         } else {
-            let g = s % 5
-            let j = Math.floor(s / 5)
-            if (j) {
-                str += reflection[i]
-                while(g){
-                    str += reflection[i]
-                }
-            } else {
-                if (s === 4) {
-                    str += reflection[i] + reflection[i + 1]
-                } else {
-                    str += reflection[i] + reflection[i + 1]
-                }
-            }
+            i++
         }
-
-        num = Math.floor(num / 10)
     }
+    return str
 };
 
-console.log(intToRoman('V'))
+console.log(intToRoman(1994))
