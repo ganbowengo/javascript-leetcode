@@ -10,7 +10,7 @@
 //   [-1, -1, 2]
 // ]
 
-// 思路 确定每个坐标 然后以双指针的形式向中间移动 减少时间复杂度
+// 思路 确定每个坐标 然后以双指针的形式向中间移动
 
 /**
  * @param {number[]} nums
@@ -25,21 +25,22 @@ var threeSum = function (nums) {
     if (nums[0] === 0 && nums[len - 1] === 0) return [
         [0, 0, 0]
     ]
+    let prev = []
     for (let i = 0; i < len; i++) {
         let _this = nums[i]
         if(_this > 0) break
         if(i > 0 && nums[i] === nums[i-1]) continue;
-        for (let j = i + 1,l = len-1; j < l;) {
-            let sum = _this + nums[j] + nums[l]
+        for (let l = i + 1,r = len-1; l < r;) {
+            let sum = _this + nums[l] + nums[r]
             if(sum === 0){
-                aggregate.push([_this, nums[j], nums[l]])
-                while (j < l && nums[j] == nums[j+1]) j++; // 去重
-                while (j < l && nums[l] == nums[l-1]) l--; // 去重
-                j++;
-                l--;
+                aggregate.push([_this, nums[l], nums[r]])
+                while (l < r && nums[l] == nums[l+1]) l++; // 去重
+                while (l < r && nums[r] == nums[r-1]) r--; // 去重
+                l++;
+                r--;
             }
-            else if (sum < 0) j++;
-            else if (sum > 0) l--;
+            else if (sum < 0) l++;
+            else if (sum > 0) r--;
         }
     }
     return aggregate

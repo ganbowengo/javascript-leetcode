@@ -102,8 +102,6 @@ var letterCombinations = function(digits) {
         console.log('v2',temp,v2)
         return temp;
     })
-
-
     return arr;
 };
 
