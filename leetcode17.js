@@ -24,31 +24,7 @@
 //         8: "tuv", //8
 //         9: "wxyz" //9
 //     }
-//     // let result = []
-//     // let len = digits.length
-//     // let sum = 1
-//     // for (let i = 0; i < len; i++) {
-//     //     sum *= (digits[i] === '7' || digits[i] === '9') ? 4 : 3
-//     // }
-//     // for (let i = 0; i < len; i++) { // 循环外层数字
-//     //     let item = reflect[digits[i]]
-//     //     let step1 = reflect[digits[i]].length
-//     //     let step = sum / step1
-//     //     let status = 0 // 标记当前的数字应该放的字母
 
-//     //     for (let j = 0; j < sum; j++) {
-//     //         // if (i === 0) {
-//     //         result[j] = (result[j] || '') + item[j % step1]
-//     //         // } else {
-//     //         //     result[j] = (result[j] || '') + item[status]
-//     //         // }
-
-//     //         // if (j === (step * status + 1) + 1) {
-//     //         //     console.log('status',step,j, status)
-//     //         //     status++
-//     //         // }
-//     //     }
-//     // }
 //     let digitsArr = digits.split('')
 //     function setStr(result, item) {
 //         // result = ['a', 'b', 'c']

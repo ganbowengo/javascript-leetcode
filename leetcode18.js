@@ -22,39 +22,69 @@
  * @param {number} target
  * @return {number[][]}
  */
-var fourSum = function (nums, target) {
-    let len = nums.length
-    if (len < 4) return []
-    let l = 0
-    let r = len - 1
-    let aggregate = []
-    nums.sort((a, b) => a - b);
-    for (let i = 0; i < len - 3; i++) {
-        if (i > 0 && nums[i] === nums[i - 1]) {
-            continue;
-        }
-        for (let j = i + 1; j < len - 2; j++) {
-            if (j > i + 1 && nums[j] === nums[j - 1]) {
-                continue;
-            }
-            let inl = j + 1
-            let inr = len - 1
-            while (inl < inr) {
-                sum = nums[i] + nums[j] + nums[inl] + nums[inr]
-                if (sum === target) {
-                    aggregate.push([nums[i], nums[j], nums[inl], nums[inr]])
-                } 
-                if (sum <= target) {
-                    while (inl < inr && nums[inl] == nums[inl + 1]) inl++; // 去重
-                    inl++;
-                } else {
-                    while (inl < inr && nums[inr] == nums[inr - 1]) inr--; // 去重
-                    inr--;
-                }
-            }
-        }
-    }
-    return aggregate
-};
+// var fourSum = function (nums, target) {
+//     let len = nums.length
+//     if (len < 4) return []
+//     let l = 0
+//     let r = len - 1
+//     let aggregate = []
+//     nums.sort((a, b) => a - b);
+//     for (let i = 0; i < len - 3; i++) {
+//         if (i > 0 && nums[i] === nums[i - 1]) {
+//             continue;
+//         }
+//         for (let j = i + 1; j < len - 2; j++) {
+//             if (j > i + 1 && nums[j] === nums[j - 1]) {
+//                 continue;
+//             }
+//             let inl = j + 1
+//             let inr = len - 1
+//             while (inl < inr) {
+//                 sum = nums[i] + nums[j] + nums[inl] + nums[inr]
+//                 if (sum === target) {
+//                     aggregate.push([nums[i], nums[j], nums[inl], nums[inr]])
+//                 } 
+//                 if (sum <= target) {
+//                     while (inl < inr && nums[inl] == nums[inl + 1]) inl++; // 去重
+//                     inl++;
+//                 } else {
+//                     while (inl < inr && nums[inr] == nums[inr - 1]) inr--; // 去重
+//                     inr--;
+//                 }
+//             }
+//         }
+//     }
+//     return aggregate
+// };
+
+
+// var fourSum = function (nums, target) {
+//     let len = nums.length
+//     if (len < 4) return []
+//     let l = 0
+//     let r = len - 1
+//     let aggregate = []
+//     nums.sort((a, b) => a - b);
+//     while (l < r) {
+//         // while (l < r && nums[l] == nums[l + 1]) l++; // 去重
+//         // while (l < r && nums[r] == nums[r - 1]) r--; // 去重
+//         let inl = l + 1
+//         let inr = r - 1
+//         let sum1 = nums[l] + nums[r] + nums[inl] + nums[inr]
+//         while (inl < inr) {
+//             let sum = nums[l] + nums[r] + nums[inl] + nums[inr]
+//             if (sum === target) {
+//                 aggregate.push([nums[l], nums[inl], nums[inr], nums[r]])
+//                 while (inl < inr && nums[inl] == nums[inl + 1]) inl++; // 去重
+//                 while (inl < inr && nums[inr] == nums[inr - 1]) inr--; // 去重
+//                 inl++;
+//                 inr--;
+//             } else if (sum < target) inl++;
+//             else if (sum > target) inr--;
+//         }
+//         sum1 <= target ? l++ : r--
+//     }
+//     return aggregate
+// };
 
 console.log(fourSum([-3,-2,-1,0,0,1,2,3], 0))
