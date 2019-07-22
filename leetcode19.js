@@ -87,19 +87,19 @@ function listNode(val) {
 // };
 
 // 升级版
-var removeNthFromEnd = function(head, n) {
-    let first = head
-    let second = head
-    while(n){
-        first = first.next
-        n--
-    }
-    while(first){
-        first = first.next
-        second = second.next
-    }
-    second.next = second.next.next
-    return head
-}
+// var removeNthFromEnd = function(head, n) {
+//     let first = head
+//     let second = head
+//     while(n){
+//         first = first.next
+//         n--
+//     }
+//     while(first){
+//         first = first.next
+//         second = second.next
+//     }
+//     second.next = second.next.next
+//     return head
+// }
 
 console.log(removeNthFromEnd(a,3))
