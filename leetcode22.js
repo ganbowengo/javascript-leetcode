@@ -24,16 +24,16 @@ var generateParenthesis = function (n) {
 };
 
 function backtrack(ans, cur, open, close, max) {
-    if (cur.length === max * 2) {
+    if (cur.length === max * 2) { // 边界值为 括号的最大长度为2n
         ans.push(cur);
         return;
     }
 
-    if (open < max){
+    if (open < max){// 左边 括号长度小于n
         backtrack(ans, cur + "(", open + 1, close, max);
     }
        
-    if (close < open){
+    if (close < open){// 右边括号长度小于 左边括号长度
         backtrack(ans, cur + ")", open, close + 1, max);
     }
 }
