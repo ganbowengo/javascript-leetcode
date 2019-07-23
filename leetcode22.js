@@ -24,8 +24,9 @@ var generateParenthesis = function (n) {
 };
 
 function backtrack(ans, cur, open, close, max) {
-    if (cur.length === max * 2) { // 边界值为 括号的最大长度为2n
-        ans.push(cur);
+    if (open === max) { // 边界值为 括号的最大长度为2n
+        // ans.push(cur);
+        ans.push(cur + ')'.repeat(max - close));
         return;
     }
 
@@ -38,4 +39,4 @@ function backtrack(ans, cur, open, close, max) {
     }
 }
 
-console.log(generateParenthesis(4))
+console.log(generateParenthesis(2))
