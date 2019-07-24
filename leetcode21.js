@@ -35,17 +35,24 @@ d.next = new listNode(4)
  */
 var mergeTwoLists = function (l1, l2) {
     let listnode = {}
+    let t = listnode
     while (l1 && l2) {
+        console.log(l1.val , l2.val)
         if (l1.val > l2.val) {
-            listnode.val = l2.val
             listnode.next = l2
             l2 = l2.next
         } else {
-            listnode.val = l1.val
             listnode.next = l1
             l1 = l1.next
         }
         listnode = listnode.next
     }
-    return listnode
+    if(l1){
+        listnode.next = l1
+    }
+    if(l2){
+        listnode.next = l2
+    }
+    
+    return t.next ? t.next : null
 };
