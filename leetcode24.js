@@ -50,7 +50,6 @@ var swapPairs = function (head) {
     let len = arr1.length
     while (i < len) {
         if (arr2[i]) {
-            console.log('23456789',listnode)
             if(!arr2[i].next){ // null 最后一个
                 listnode.next = arr2[i]
             }else{
