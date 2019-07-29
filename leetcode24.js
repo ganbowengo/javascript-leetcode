@@ -31,46 +31,57 @@ let b = a.next = new listNode(2)
  * @param {ListNode} head
  * @return {ListNode}
  */
-var swapPairs = function (head) {
-    let listnode = {}
-    let t = listnode
-    let i = 1
-    let arr1 = []
-    let arr2 = []
-    while (head) {
-        if (i % 2 !== 0) { // 前一个
-            arr1.push(head)
-        } else { // 后一个
-            arr2.push(head)
-        }
-        head = head.next
-        i++
-    }
-    i = 0
-    let len = arr1.length
-    while (i < len) {
-        if (arr2[i]) {
-            if(!arr2[i].next){ // null 最后一个
-                listnode.next = arr2[i]
-            }else{
-                arr2[i].next = null
-                listnode.next = arr2[i]
-            }
-            listnode = listnode.next
-        } 
-        if (arr1[i]) {
-            if(!arr1[i].next){ // null 最后一个
-                listnode.next = arr1[i]
-            }else{
-                arr1[i].next = null
-                listnode.next = arr1[i]
-            }
-            listnode = listnode.next
-        } 
-        i++
-    }
+// var swapPairs = function (head) {
+//     let listnode = {}
+//     let t = listnode
+//     let i = 1
+//     let arr1 = []
+//     let arr2 = []
+//     while (head) {
+//         if (i % 2 !== 0) { // 前一个
+//             arr1.push(head)
+//         } else { // 后一个
+//             arr2.push(head)
+//         }
+//         head = head.next
+//         i++
+//     }
+//     i = 0
+//     let len = arr1.length
+//     while (i < len) {
+//         if (arr2[i]) {
+//             if(!arr2[i].next){ // null 最后一个
+//                 listnode.next = arr2[i]
+//             }else{
+//                 arr2[i].next = null
+//                 listnode.next = arr2[i]
+//             }
+//             listnode = listnode.next
+//         } 
+//         if (arr1[i]) {
+//             if(!arr1[i].next){ // null 最后一个
+//                 listnode.next = arr1[i]
+//             }else{
+//                 arr1[i].next = null
+//                 listnode.next = arr1[i]
+//             }
+//             listnode = listnode.next
+//         } 
+//         i++
+//     }
 
-    return t.next || null
-};
+//     return t.next || null
+// }; 
+
+
+function swapPairs(head){
+    if(head == null || head.next == null){
+        return head
+    }
+    let list = head.next
+    head.next = swapPairs(list.next)
+    list.next = head
+    return list
+}
 
 console.log(swapPairs(a))
