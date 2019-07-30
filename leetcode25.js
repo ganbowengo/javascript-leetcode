@@ -80,7 +80,9 @@ function reserve(head, k) {
     let i = k
     while (i--) {
         let after = index.next
+        console.log('head111',JSON.stringify(head))
         index.next = prev
+        console.log('head',JSON.stringify(head))
         prev = index
         index = after
     }
