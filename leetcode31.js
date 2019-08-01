@@ -14,47 +14,46 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var nextPermutation = function (nums) {
-    // let len = nums.length - 1
-    // let i = 0,
-    //     j = 0
-    // for (i = len; i > 0; i--) {
-    //     if (nums[i] > nums[i - 1]) {
-    //         i--
-    //         break
-    //     }
-    // }
-    // if (i > 0) {
-    //     j = len
-    //     while (j >= 0 && nums[j] <= nums[i]) {
-    //         j--;
-    //     }
-    //     trans(nums, i, j)
-    // }
-    // if (i === 0) {
-    //     while (i < len) trans(nums, i++, len--)
-    // }
-    let len = nums.length;
-    if (len <= 1) return;
-
-    for (let i = len - 2; i >= 0; i--) {
-        if (nums[i] < nums[i + 1]) {
-            for (let j = len - 1; j > i; j--) {
-                if (nums[i] < nums[j]) {
-                    swap(i, j, nums)
-                    break;
-                }
-            }
-            let x = i + 1,
-                y = len - 1;
-            while (x < y) swap(x++, y--, nums)
-            break;
-        }
-        if (i === 0) {
-            let x = i,
-                y = len - 1;
-            while (x < y) swap(x++, y--, nums)
+    let len = nums.length - 1
+    let i = 0,
+        j = 0
+    for (i = len; i >= 0; i--) {
+        if (nums[i] > nums[i - 1]) {
+            i--
+            break
         }
     }
+    if (i >= 0) {
+        j = len
+        while (j >= 0 && nums[j] <= nums[i]) {
+            j--;
+        }
+        swap(i, j,nums)
+    }
+    i++
+    while (i < len) swap(i++, len--,nums)
+    // let len = nums.length;
+    // if (len <= 1) return;
+
+    // for (let i = len - 2; i >= 0; i--) {
+    //     if (nums[i] < nums[i + 1]) {
+    //         for (let j = len - 1; j > i; j--) {
+    //             if (nums[i] < nums[j]) {
+    //                 swap(i, j, nums)
+    //                 break;
+    //             }
+    //         }
+    //         let x = i + 1,
+    //             y = len - 1;
+    //         while (x < y) swap(x++, y--, nums)
+    //         break;
+    //     }
+    //     if (i === 0) {
+    //         let x = i,
+    //             y = len - 1;
+    //         while (x < y) swap(x++, y--, nums)
+    //     }
+    // }
     return nums
 };
 
@@ -64,4 +63,4 @@ function swap(i, j, nums) {
     nums[j] = t;
 }
 // 当前什么
-console.log(nextPermutation([3,2,1]))
+console.log(nextPermutation([1,1,5]))
