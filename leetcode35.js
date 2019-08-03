@@ -26,27 +26,47 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
+// 时间O(n) 空间 O(1) 
+// var searchInsert = function(nums, target) {
+//     let left = 0
+//     let right = nums.length - 1
+//     if(right < 0) return 0
+//     if(right === 0) return nums[0] > target ? 0 : 1
+//     while(left <= right){
+//         if(nums[left] < target){
+//             left++
+//         }
+//         if(nums[right] > target){
+//             right--
+//         }
+//         if(nums[left] === target){
+//             return left
+//         }
+//         if(nums[right] === target){
+//             return right
+//         }
+//     }
+//     if(right === nums.length - 1) return nums.length
+//     return left
+// };
+
+var searchInsert = function (nums, target) {
     let left = 0
     let right = nums.length - 1
-    if(right < 0) return 0
-    if(right === 0) return nums[0] > target ? 0 : 1
-    while(left <= right){
-        if(nums[left] < target){
-            left++
-        }
-        if(nums[right] > target){
-            right--
-        }
-        if(nums[left] === target){
-            return left
-        }
-        if(nums[right] === target){
-            return right
+    if (right < 0) return 0
+    if (right === 0) return target > nums[0] ? 1 : 0
+    let mid = null
+    while (left <= right) {
+        mid = (left + right) >> 1;
+        if (target === nums[mid]) {
+            return mid
+        } else if (target > nums[mid]) {
+            left = mid + 1
+        } else {
+            right = mid - 1
         }
     }
-    if(right === nums.length - 1) return nums.length
     return left
 };
 
-console.log(searchInsert([1,3,5,6], 0))
+console.log(searchInsert([1], 2))
