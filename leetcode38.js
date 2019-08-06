@@ -22,7 +22,10 @@
 // 示例 2:
 
 // 输入: 4
-// 输出: "1211" 
+// 输出: "1211"   
+
+// 自己写的题解
+// https://leetcode-cn.com/problems/count-and-say/solution/javascriptjie-fa-bu-di-gui-hao-dong-by-ce-liang-py/
 
 /**
  * @param {number} n
