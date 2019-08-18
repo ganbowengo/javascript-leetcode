@@ -22,20 +22,21 @@
  * @return {number[]}
  */
 var plusOne = function (digits) {
-    let len = digits.length - 1
-    digits[len]++
-    for (let i = len; i >= 0; i--) {
+    let i = digits.length - 1
+    if (++digits[i] < 10) {
+        return digits
+    }
+    for (; i > 0; i--) {
         if (digits[i] > 9) {
-            if (i === 0) {
-                digits.unshift(Math.floor(digits[i] / 10))
-                digits[i + 1] = digits[i + 1] % 10
-            } else {
-                digits[i - 1] = digits[i - 1] + Math.floor(digits[i] / 10)
-                digits[i] = digits[i] % 10
-            }
+            digits[i - 1] = digits[i - 1] + Math.floor(digits[i] / 10)
+            digits[i] = digits[i] % 10
         }
+    }
+    if (digits[i] > 9) {
+        digits.unshift(Math.floor(digits[i] / 10))
+        digits[i + 1] = digits[i + 1] % 10
     }
     return digits
 };
 
-console.log(plusOne([9, 9, 9]))
+console.log(plusOne([9, 9, 8]))
