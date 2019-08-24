@@ -27,15 +27,15 @@ var isPalindrome = function (s) {
     while (left < right) {
         itl = s[left]
         itr = s[right]
-        while(!reg.test(itl)){
+        while (!reg.test(itl)) {
             left++
             itl = s[left]
         }
-        while(!reg.test(itr)){
+        while (!reg.test(itr)) {
             right--
             itr = s[right]
         }
-        if(itl !== itr){
+        if (itl !== itr) {
             return false
         }
         left++
