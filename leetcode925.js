@@ -44,12 +44,9 @@ var isLongPressedName = function (name, typed) {
         i = 0
     while (k < namel && i < typedl) {
         if (name[k] === typed[i]) {
-            i++
             k++
         }
-        if (name[k] !== typed[i]) {
-            i++
-        }
+        i++
     }
     return k === namel
 };
