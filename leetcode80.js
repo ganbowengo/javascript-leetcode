@@ -39,35 +39,35 @@
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function (nums) {
-    let len = nums.length - 1
-    let k = 0
-    let i = 0
-    while (k < nums.length) {
-        if (nums[k] === nums[k + 1]) {
-            i++
-            if (i > 1) {
-                nums.splice(k, 1)
-                continue
-            }
-        } else {
-            i = 0
-        }
-        k++
-    }
-    return nums
-};
+// var removeDuplicates = function (nums) {
+//     let len = nums.length - 1
+//     let k = 0
+//     let i = 0
+//     while (k < nums.length) {
+//         if (nums[k] === nums[k + 1]) {
+//             i++
+//             if (i > 1) {
+//                 nums.splice(k, 1)
+//                 continue
+//             }
+//         } else {
+//             i = 0
+//         }
+//         k++
+//     }
+//     return nums
+// };
 
 var removeDuplicates = function (nums) {
-    let k = 0
+    let len = nums.length
+    let k = -1
     let i = 0
-    while (k < nums.length) {
-        if (i < 2 || nums[k] !== nums[k - 2]) {
+    while (++k < len) {
+        if (i < 2 || nums[k] !== nums[i - 2]) {
             nums[i++] = nums[k]
         }
-        k++
     }
-    nums.length = i + 1
+    nums.length = i
     return nums
 };
-console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 3, 3])) // 0, 0, 1, 1, 2, 3, 3 
+console.log(removeDuplicates([1,1,1,2,2,3])) // 0, 0, 1, 1, 2, 3, 3 
