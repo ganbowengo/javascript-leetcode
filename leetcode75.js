@@ -44,6 +44,7 @@ var sortColors = function (nums) {
 };
 
 function swap(a, b, nums) {
+    if (a === b) return
     let temp = nums[a]
     nums[a] = nums[b]
     nums[b] = temp
