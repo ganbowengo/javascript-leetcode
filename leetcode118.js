@@ -25,8 +25,8 @@ var generate = function (numRows) {
     let res = []
     let item = null
     while (i < numRows) {
+        let k = i
         item = new Array(++i)
-        let k = i - 1
         while (k >= 1) {
             s = res[i - 2][k] || 0
             t = res[i - 2][k - 1] || 0
@@ -39,4 +39,6 @@ var generate = function (numRows) {
     return res
 };
 
+console.time()
 console.log(generate(8))
+console.timeEnd()
