@@ -18,28 +18,43 @@
  * @param {number} rowIndex
  * @return {number[]}
  */
+// var getRow = function (rowIndex) {
+//     let prev = [1]
+//     let next = [],
+//         nextl = 0
+//     let k = 0
+//     while (k <= rowIndex) {
+//         let i = 0
+//         next = []
+//         next.push(1)
+//         nextl = next.length
+//         while (nextl <= k) {
+//             let l = prev[i] || 0
+//             let r = prev[i + 1] || 0
+//             next[++i] = l + r
+//             nextl = next.length
+//         }
+//         prev = next.slice()
+//         k++
+//     }
+//     return next
+// };
+
 var getRow = function (rowIndex) {
-    let prev = [1]
-    let next = [],
-        nextl = 0
-    let k = 0
+    let next = [1]
+    let k = 1
     while (k <= rowIndex) {
-        let i = 0
-        next = []
-        next.push(1)
-        nextl = next.length
-        while (nextl <= k) {
-            let l = prev[i] || 0
-            let r = prev[i + 1] || 0
-            next[++i] = l + r
-            nextl = next.length
+        let i = k
+        while (i >= 1) {
+            let r = next[i] || 0
+            let l = next[i - 1] || 0
+            next[i--] = l + r
         }
-        prev = next.slice()
         k++
     }
     return next
 };
 
 console.time()
-console.log(getRow(3))
+console.log(getRow(0))
 console.timeEnd()
