@@ -42,18 +42,30 @@
 // };
 
 
-// n(n+1) = 2m
+// x(x+1) = 2n 等差数列和
+// (-b + sqrt(b^2 - 4ac))/2
+// var arrangeCoins = function (n) {
+//     return Math.floor((Math.sqrt(1 + 8 * n) - 1) / 2)
+// };
+
+
 var arrangeCoins = function (n) {
-    let i = 1
-    while (n >= i) {
-        n -= i 
-        i++
+    let left = 0
+    let right = n
+    while (left < right) {
+        let mid = Math.floor((left + right + 1) / 2)
+        let r = mid * (mid + 1) / 2  // ==> x(x+1) = 2n 比较mid比最终结果x大还是小 小则将left 左移 否则将right右移
+        if (r > n) {
+            right = mid - 1
+        } else {
+            left = mid
+        }
     }
-    return i - 1
+    return left
 };
 
 console.time()
-for(let i = 1;i < 10;i++){
-    console.log(i,'-----',arrangeCoins(i))
+for (let i = 1; i < 20; i++) {
+    console.log(i, '-----', arrangeCoins(i))
 }
 console.timeEnd()
