@@ -59,24 +59,44 @@
 //     return num
 // }
 
-var lengthOfLongestSubstring = function (s) {
+var lengthOfLongestSubstring1 = function(s) {
     let l = s.length
     let num = 0,
         i = 0,
         j = 0,
         str = ''
-        t = 1
     // [i,j)    
     while (i < l && j < l) {
         if (str.indexOf(s[j]) < 0) {
             str += s[j++]
-            num = Math.max(num, j-i)
+            num = Math.max(num, j - i)
         } else {
-            str = s.slice(++i,j)
+            str = s.slice(++i, j)
         }
     }
     return num
 }
 
-let s = lengthOfLongestSubstring("bbbbtablud")
-console.log('s', s)
+
+var lengthOfLongestSubstring = function(s) {
+    let slen = s.length
+    let left = 0
+    let right = 0
+    let obj = {}
+    let max = 0
+    while (right < slen) {
+        obj[s[right]] || (obj[s[right]] = 0)
+        ++obj[s[right]]
+        while(obj[s[right]] > 1){
+            obj[s[left]]--
+            left++
+        }
+        max = Math.max(right - left + 1, max)
+        right++
+    }
+    return max
+}
+
+let s1 = lengthOfLongestSubstring1("asdfhaskfdlkjbasdfkn")
+let s = lengthOfLongestSubstring("asdfhaskfdlkjbasdfkn")
+console.log('s', s1, s)
