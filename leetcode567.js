@@ -50,7 +50,7 @@ var checkInclusion = function(s1, s2) {
         // 移动左指针 固定窗口大小
         if (r > short - 1) {
             obj[s2[l]]++
-            if(obj[s2[l]] > 0) { // 每当出现left 不是s1中存在的字母 count--
+            if(obj[s2[l]] > 0) { // 每当出现left 是s1中存在的字母 count--
                 count--
             }
             l++
