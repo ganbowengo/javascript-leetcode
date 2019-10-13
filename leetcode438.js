@@ -49,8 +49,9 @@ var findAnagrams = function(s, p) {
     let obj = {}
     let slen = s.length
     let plen = p.length
+    let result = []
     let i = 0
-
+    if(plen > slen) return result
     // 存储窗口目标的信息
     while (i < plen) {
         obj[p[i]] || (obj[p[i]] = 0)
@@ -60,7 +61,6 @@ var findAnagrams = function(s, p) {
     let r = 0
     let l = 0
     let count = 0
-    let result = []
     // 在主目标移动窗口
     while (r < slen) {
         obj[s[r]] || (obj[s[r]] = 0)
