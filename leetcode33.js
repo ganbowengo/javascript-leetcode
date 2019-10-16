@@ -22,67 +22,96 @@
  * @param {number} target
  * @return {number}
  */
-var search = function (nums, target) {
-    let num = -1
-    let left = []
-    let right = []
-    let mid = 1
-    while (mid) {
-        mid = nums.length >> 1;
-        left = nums.slice(0, mid)
-        right = nums.slice(mid, nums.length)
-        console.log('num', left, right, mid)
-        if (target === left[0]) {
-            num += 1
-            return num
-        }
-        if (target === left[left.length - 1]) {
-            num += left.length
-            return num
-        }
-        if (left[0] < left[left.length - 1]) {
-            if (left[0] < target && target < left[left.length - 1]) {
-                nums = left
-                continue
-            } else {
-                num += mid
-                nums = right
-                continue
-            }
-        } else {
-            if (left[0] > target && target < left[left.length - 1] && left.length !== 1) {
-                nums = left
-                continue
-            }
-        }
+// var search = function (nums, target) {
+//     let num = -1
+//     let left = []
+//     let right = []
+//     let mid = 1
+//     while (mid) {
+//         mid = nums.length >> 1;
+//         left = nums.slice(0, mid)
+//         right = nums.slice(mid, nums.length)
+//         console.log('num', left, right, mid)
+//         if (target === left[0]) {
+//             num += 1
+//             return num
+//         }
+//         if (target === left[left.length - 1]) {
+//             num += left.length
+//             return num
+//         }
+//         if (left[0] < left[left.length - 1]) {
+//             if (left[0] < target && target < left[left.length - 1]) {
+//                 nums = left
+//                 continue
+//             } else {
+//                 num += mid
+//                 nums = right
+//                 continue
+//             }
+//         } else {
+//             if (left[0] > target && target < left[left.length - 1] && left.length !== 1) {
+//                 nums = left
+//                 continue
+//             }
+//         }
         
-        if (target === right[0]) {
-            num += mid + 1
-            return num
-        }
-        if (target === right[right.length - 1]) {
-            num += mid + right.length
-            return num
-        }
-        if (right[0] < right[right.length - 1]) {
-            if (right[0] < target && target < right[right.length - 1]) {
-                num += mid
-                nums = right
-                continue
+//         if (target === right[0]) {
+//             num += mid + 1
+//             return num
+//         }
+//         if (target === right[right.length - 1]) {
+//             num += mid + right.length
+//             return num
+//         }
+//         if (right[0] < right[right.length - 1]) {
+//             if (right[0] < target && target < right[right.length - 1]) {
+//                 num += mid
+//                 nums = right
+//                 continue
+//             } else {
+//                 nums = left
+//                 continue
+//             }
+//         } else {
+//             if (right[0] > target && target < right[right.length - 1] && right.length !== 1) {
+//                 num += mid
+//                 nums = right
+//                 continue
+//             }
+//         }
+//         return -1
+//     }
+//     return num
+// };
+
+
+var search = function(nums, target) {
+    let len = nums.length
+    let left = 0
+    let right = len - 1
+    while (left <= right) {
+        let mid = Math.floor((left + right + 1) / 2)
+        if(target === nums[mid]) return mid
+        if(target === nums[left]) return left
+        if(target === nums[right]) return right
+        if (nums[left] < nums[mid]) {
+            // 左侧有序
+            if(target < nums[mid] && target > nums[left]){
+                right = mid - 1
             } else {
-                nums = left
-                continue
+                left = mid + 1
             }
         } else {
-            if (right[0] > target && target < right[right.length - 1] && right.length !== 1) {
-                num += mid
-                nums = right
-                continue
+            // 右侧有序
+            if(target > nums[mid] && target < nums[right]){
+                left = mid + 1
+            } else {
+                right = mid - 1
             }
         }
-        return -1
     }
-    return num
+    return -1
 };
 
 console.log(search([2,3,4,5,6,7,8,9,1],9))
