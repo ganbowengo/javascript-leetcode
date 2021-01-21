@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @Author: ganbowen
+ * @Date: 2019-10-27 15:05:01
+ * @LastEditors: ganbowen
+ * @LastEditTime: 2021-01-05 16:08:25
+ */
 // 报数序列是一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：
 
 // 1.     1
@@ -34,7 +41,7 @@
 var countAndSay = function (n) {
     let str = '1'
     if (n === 1) return str
-    for (let i = 0; i < n-1; i++) {
+    for (let i = 0; i < n - 1; i++) {
         str = say(str)
     }
     return str
@@ -55,3 +62,13 @@ var say = function (str) {
     return result
 }
 console.log(countAndSay(3))
+
+// replace
+
+var countAndSay2 = function (n) {
+    let str = '1'
+    for (let i = 1; i < n; i++) {
+        str = str.replace(/(\d)\1*/g, item => `${item.length}${item[0]}`)
+    }
+    return str
+};

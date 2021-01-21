@@ -23,7 +23,7 @@
  * @return {ListNode}
  */
 
-function listNode(val) {
+function listNode (val) {
     this.val = val;
     this.next = null;
 }
@@ -51,14 +51,14 @@ d.next = new listNode(4)
  * @param {ListNode} l2
  * @return {ListNode}
  */
-function listNode(val) {
+function listNode (val) {
     this.val = val;
     this.next = null;
 }
 
-var linkedToNum = function (linked){
+var linkedToNum = function (linked) {
     let arr = []
-    while(linked && typeof linked.val === 'number'){
+    while (linked && typeof linked.val === 'number') {
         arr.unshift(linked.val)
         linked = linked.next
     }
@@ -75,21 +75,39 @@ var add = function (a, b) { //两个字符串相加
         res = c % 10 + res
         c = c > 9
     }
-    return (a-0) + (b-0)
+    return (a - 0) + (b - 0)
 }
 
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
     let arr1 = linkedToNum(l1)
     let arr2 = linkedToNum(l2)
-    let sum = add(arr1,arr2)
-    sum = (sum).split('').map(function(item,index){
+    let sum = add(arr1, arr2)
+    sum = (sum).split('').map(function (item, index) {
         return new listNode(item)
     })
-    for(let i = sum.length-1;i>0;i--){
-        sum[i].next = sum[i-1]
-    } 
+    for (let i = sum.length - 1; i > 0; i--) {
+        sum[i].next = sum[i - 1]
+    }
     return sum[sum.length - 1]
 };
 
-console.log(addTwoNumbers(a,c))
+// console.log(addTwoNumbers(a, c))
 // addTwoNumbers(a,c)
+
+var addTwoNumbers2 = function (l1, l2) {
+    let list = new listNode(0)
+    let result = list
+    let con = 0
+    while (l1 || l2 || con) {
+        let sum = (l1 && l1.val || 0) + (l2 && l2.val || 0) + con
+        let temp = sum % 10
+        l1 = l1 && l1.next
+        l2 = l2 && l2.next
+        con = parseInt(sum / 10)
+        list.next = new listNode(temp)
+        list = list.next
+    }
+    return result.next
+};
+
+console.log(addTwoNumbers2(a, c))

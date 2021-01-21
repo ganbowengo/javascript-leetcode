@@ -10,7 +10,7 @@
 
 2.上代码
 
-```
+```js
 var characterReplacement = function(s, k) {
     // 最大可替换次数K 等于最大的字符串减去最多出现的字母数
     let slen = s.length
