@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-04 16:43:59
+ * @Descripttion : 
+ */
 // 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
 
 
@@ -43,3 +50,4 @@ var search = function(nums, target) {
 };
 
 console.log(search([-1, 0, 3, 5, 9, 12], 3))
+console.log(search([-1, 0, 3, 5, 9, 12], 2))
