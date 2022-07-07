@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-07 15:00:52
+ * @Descripttion : 
+ */
 // 实现 int sqrt(int x) 函数。
 
 // 计算并返回 x 的平方根，其中 x 是非负整数。
@@ -50,20 +57,43 @@
 // };
 
 // // 二分法
+// var mySqrt = function (x) {
+//     if (!x || x === 1) return x
+//     let l = 0
+//     let r = x / 2 + 1
+//     let m = 0
+//     while (l < r - 1) {
+//         m = (l + r + 1) >> 1;
+//         if (m * m <= x)
+//             l = m;
+//         else
+//             r = m;
+//     }
+//     return l
+// };
+
+
 var mySqrt = function (x) {
     if (!x || x === 1) return x
     let l = 0
-    let r = x / 2 + 1
-    let m = 0
-    while (l < r - 1) {
-        m = (l + r + 1) >> 1;
-        if (m * m <= x)
-            l = m;
-        else
-            r = m;
+    let r = Math.floor(x / 2)
+    while (l < r) {
+        let mid = Math.floor((l + r) / 2)
+        if (mid * mid === x) return mid
+        if (mid * mid > x) {
+            r = mid - 1
+            if ((mid - 1) ** 2 < x) {
+                return mid - 1
+            }
+        } else {
+            l = mid + 1
+            if ((mid + 1) ** 2 > x) {
+                return mid
+            }
+        }
     }
     return l
 };
 
 
-console.log(mySqrt(9))
+console.log(mySqrt(16))
