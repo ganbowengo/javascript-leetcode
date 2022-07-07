@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-07 10:14:31
+ * @Descripttion : 
+ */
 // 我们把符合下列属性的数组 A 称作山脉：
 
 // A.length >= 3
@@ -29,26 +36,50 @@
  * @param {number[]} A
  * @return {number}
  */
-var peakIndexInMountainArray = function(A) {
+// var peakIndexInMountainArray = function(A) {
+//     let left = 0
+//     let right = A.length
+//     while (left < right) {
+//         let mid = Math.floor((left + right) / 2)
+//         let it = A[mid]
+//         let itr = A[mid + 1]
+//         let itl = A[mid - 1]
+//         if (itl < it && it < itr) { //mid 在左侧
+//             left = mid + 1
+//             continue
+//         }
+//         if (itr < it && it < itl) { //mid 在右侧
+//             right = mid
+//             continue
+//         }
+//         if(itr < it && it > itl) {
+//             return mid
+//         }
+//     }
+// };
+
+// console.log(peakIndexInMountainArray([0, 1,3,2, 1, 0]))
+
+
+var peakIndexInMountainArray = function(arr) {
     let left = 0
-    let right = A.length
-    while (left < right) {
+    let right = arr.length
+    while(left <= right) {
         let mid = Math.floor((left + right) / 2)
-        let it = A[mid]
-        let itr = A[mid + 1]
-        let itl = A[mid - 1]
-        if (itl < it && it < itr) { //mid 在左侧
-            left = mid + 1
-            continue
-        }
-        if (itr < it && it < itl) { //mid 在右侧
-            right = mid
-            continue
-        }
-        if(itr < it && it > itl) {
+        console.log('mid', mid)
+        if(arr[mid-1]< arr[mid] && arr[mid] > arr[mid + 1]) {
             return mid
+        }
+
+        if(arr[mid-1] < arr[mid] && arr[mid] < arr[mid + 1]) {
+            left = mid + 1
+        }
+
+        if(arr[mid-1] > arr[mid] && arr[mid] > arr[mid + 1]) {
+            right = mid
         }
     }
 };
-
 console.log(peakIndexInMountainArray([0, 1,3,2, 1, 0]))
+
+// console.log(peakIndexInMountainArray([0,2,1,0]))

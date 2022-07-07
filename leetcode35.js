@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-07 10:03:07
+ * @Descripttion : 
+ */
 // 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 
 // 你可以假设数组中无重复元素。
@@ -50,17 +57,39 @@
 //     return left
 // };
 
-var searchInsert = function (nums, target) {
+// var searchInsert = function (nums, target) {
+//     let left = 0
+//     let right = nums.length - 1
+//     if (right < 0) return 0
+//     if (right === 0) return target > nums[0] ? 1 : 0
+//     let mid = null
+//     while (left <= right) {
+//         mid = (left + right) >> 1;
+//         if (target === nums[mid]) {
+//             return mid
+//         } else if (target > nums[mid]) {
+//             left = mid + 1
+//         } else {
+//             right = mid - 1
+//         }
+//     }
+//     return left
+// };
+
+
+
+var searchInsert = function(nums, target) {
     let left = 0
-    let right = nums.length - 1
-    if (right < 0) return 0
-    if (right === 0) return target > nums[0] ? 1 : 0
-    let mid = null
-    while (left <= right) {
-        mid = (left + right) >> 1;
-        if (target === nums[mid]) {
+    let right = nums.length
+    if(right === 0) return 0
+    if(right === 1) return target > nums[0] ? 1 : 0
+    while(left <= right) {
+        let mid = Math.floor((left + right) / 2)
+        console.log('mid', mid)
+        if(target ===  nums[mid]) {
             return mid
-        } else if (target > nums[mid]) {
+        }
+        if(target > nums[mid]) {
             left = mid + 1
         } else {
             right = mid - 1
@@ -69,4 +98,4 @@ var searchInsert = function (nums, target) {
     return left
 };
 
-console.log(searchInsert([1], 2))
+console.log(searchInsert([1,3], 2))
