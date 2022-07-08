@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-08 15:20:34
+ * @Descripttion : 
+ */
 // 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
 
 // 你的算法时间复杂度必须是 O(log n) 级别。
@@ -72,3 +79,18 @@ var findRight = function (nums, target) {
     return nums[left - 1] === target ? left - 1 : -1;
 }
 console.log(searchRange([5, 7, 7, 8, 8, 10], 8))
+
+
+var searchRange = function (nums, target) {
+    let left = 0
+    let right = nums.length
+    while (left < right) {
+        let mid = (left + right) >> 1;
+        if (target > nums[mid]) {
+            left = mid + 1
+        } else {
+            right = mid
+        }
+    }
+
+};

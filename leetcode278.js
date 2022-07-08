@@ -1,3 +1,10 @@
+/*
+ * @Author       : ganbowen
+ * @Date         : 2019-10-27 15:05:01
+ * @LastEditors  : ganbowen
+ * @LastEditTime : 2022-07-08 15:09:22
+ * @Descripttion : 
+ */
 // 你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。
 
 // 假设你有 n 个版本 [1, 2, ..., n]，你想找出导致之后所有版本出错的第一个错误的版本。
@@ -34,12 +41,34 @@ var solution = function (isBadVersion) {
      * @param {integer} n Total versions
      * @return {integer} The first bad version
      */
-     return function (n) {
+    return function (n) {
         let left = 0
         let right = n
         while (left < right) {
             let mid = Math.floor((left + right) / 2)
             if (isBadVersion(mid) !== isBadVersion(right)) {
+                left = mid + 1
+            } else {
+                right = mid
+            }
+        }
+
+        return right
+    };
+};
+
+
+var solution = function (isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function (n) {
+        let left = 0
+        let right = n
+        while (left < right) {
+            let mid = Math.floor((left + right) / 2)
+            if (isBadVersion(mid)) {
                 left = mid + 1
             } else {
                 right = mid
