@@ -2,7 +2,7 @@
  * @Author       : ganbowen
  * @Date         : 2022-07-11 16:37:18
  * @LastEditors  : ganbowen
- * @LastEditTime : 2022-07-11 18:36:47
+ * @LastEditTime : 2022-07-11 20:39:21
  * @Descripttion : 
  */
 // 1608. 特殊数组的特征值
@@ -51,24 +51,38 @@
 var specialArray = function (nums) {
     nums.sort((a, b) => a - b)
     if (nums[0] > nums.length) return nums.length
+    console.log('num', nums)
     for (let i = 0; i < nums.length; i++) {
-        const curr = nums[i]
-        let left = i
+        let left = 0
         let right = nums.length
-        let mid = undefined
         while (left < right) {
-            mid = Math.floor((left + right) / 2)
-            if (nums[mid] >= curr) {
-                right = mid - 1
+            let mid = Math.floor((left + right) / 2)
+            if (nums[mid] >= i) {
+                right = mid
             } else {
                 left = mid + 1
             }
         }
-        if (nums.length - left === nums[left]) return nums[left]
-        if (nums.length - left + 1 === mid) return nums.length - left
+        console.log('left', left, i)
+        if (nums.length - left === i) return i
+        // left // 第一个大于等于 curr值
+        // if (nums.length - left === nums[left] && nums.length - left !== nums[left - 1]) return nums[left]
+        // if (nums.length - left > nums[left - 1] && nums.length - left < nums[left]) return nums.length - left
     }
     return -1
 };
+
+
+// var specialArray = function (nums) {
+//     for (let i = 0; i < nums.length; i++) {
+//         let s = 0
+//         for (let j = 0; j < nums.length; j++) {
+//             if (nums[j] >= i) s++
+//         }
+//         if (s === i) return i
+//     }
+//     return -1
+// };
 
 
 // function specialArray (nums) {
@@ -103,8 +117,11 @@ var specialArray = function (nums) {
 //     return l;
 // }
 
-// 3,3,-1,-1
+// 5,3,3,-1,-1,-1
+console.log('specialArray', specialArray([0, 8, 5, 11, 9, 2, 3, 2, 6]))
 console.log('specialArray', specialArray([1, 0, 0, 6, 4, 9]))
 console.log('specialArray', specialArray([0, 4, 3, 0, 4]))
 console.log('specialArray', specialArray([3, 6, 7, 7, 0]))
 console.log('specialArray', specialArray([1, 1, 2]))
+console.log('specialArray', specialArray([0, 2, 2, 3]))
+console.log('specialArray', specialArray([0, 0]))
